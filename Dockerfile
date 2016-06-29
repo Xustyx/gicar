@@ -1,16 +1,16 @@
 FROM  centos:6.6
 
-RUN yum install httpd glibc libstdc++ ncurses perl unzip -y
+RUN yum install httpd glibc libstdc++ ncurses perl unzip tar xz -y
 
 ENV httpd /etc/httpd
 
 RUN mkdir -p ${httpd}/CA/webagent
 
-RUN curl -o ${httpd}/CA/webagent.zip https://dl.dropboxusercontent.com/u/17397489/gicar/webagent.zip
-RUN unzip  ${httpd}/CA/webagent.zip -d  ${httpd}/CA/webagent/
-RUN rm ${httpd}/CA/webagent.zip
+RUN curl -o ${httpd}/CA/webagent.tar.xz http://canigo.ctti.gencat.cat/related/cloud/fitxers-suport/webagent.tar.xz
+RUN tar xfvJ ${httpd}/CA/webagent.tar.xz -C ${httpd}/CA/
+RUN rm ${httpd}/CA/webagent.tar.xz
 
-RUN curl -o ${httpd}/conf/config.zip https://dl.dropboxusercontent.com/u/17397489/gicar/config.zip
+RUN curl -o ${httpd}/conf/config.zip http://canigo.ctti.gencat.cat/related/cloud/fitxers-suport/config.zip
 RUN unzip  -o ${httpd}/conf/config.zip -d  ${httpd}/conf/
 RUN rm ${httpd}/conf/config.zip
 
