@@ -41,6 +41,4 @@ RUN chmod 755 /entrypoint.sh
 COPY wait-for-it.sh /
 RUN chmod 755 /wait-for-it.sh
 
-COPY httpd.conf {httpd}/conf/
-
 CMD ["/entrypoint.sh"]
